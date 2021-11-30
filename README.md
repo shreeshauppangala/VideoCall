@@ -1,5 +1,3 @@
-## Video chat
-
 ## Preparing the application
 
 Start by cloning or downloading the repo to your machine.
