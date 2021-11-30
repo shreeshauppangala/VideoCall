@@ -3,7 +3,7 @@
 Start by cloning or downloading the repo to your machine.
 
 ```bash
-git clonehttps://github.com/shreeshauppangala/VideoCall.git
+git clone https://github.com/shreeshauppangala/VideoCall.git
 cd VideoCall
 ```
 
