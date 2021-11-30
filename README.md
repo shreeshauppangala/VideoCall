@@ -3,8 +3,8 @@
 Start by cloning or downloading the repo to your machine.
 
 ```bash
-git clone https://github.com/philnash/twilio-video-react-hooks.git
-cd twilio-video-react-hooks
+git clonehttps://github.com/shreeshauppangala/VideoCall.git
+cd VideoCall
 ```
 
 Install the dependencies:
