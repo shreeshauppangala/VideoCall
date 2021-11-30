@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 const Participant = ({ participant }) => {
   const [videoTracks, setVideoTracks] = useState([]);
   const [audioTracks, setAudioTracks] = useState([]);
+  const [audio, setAudio] = useState(false);
+  const [video, setVideo] = useState(false);
 
   const videoRef = useRef();
   const audioRef = useRef();
@@ -65,8 +67,12 @@ const Participant = ({ participant }) => {
   return (
     <div className="participant">
       <h3>{participant.identity}</h3>
-      <video ref={videoRef} autoPlay={true} />
-      <audio ref={audioRef} autoPlay={true} muted={true} />
+      {/* <i class="fas fa-video" onClick={() => setVideo(!video)}/> */}
+      <i class="fas fa-video-slash" onClick={() => setVideo(!video)}></i>
+      {/* <i class="fas fa-microphone" onClick={() => setAudio(!audio)}/> */}
+      {/* <i class="fas fa-microphone-slash" onClick={() => setAudio(!audio)}></i> */}
+      <video ref={videoRef} autoPlay={true} muted={video}/>
+      <audio ref={audioRef} autoPlay={true} muted={audio} />
     </div>
   );
 };
