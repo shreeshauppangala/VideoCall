@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const Participant = ({ participant }) => {
+  // console.log(participant.videoTracks)
   const [videoTracks, setVideoTracks] = useState([]);
   const [audioTracks, setAudioTracks] = useState([]);
-  const [audio, setAudio] = useState(false);
-  const [video, setVideo] = useState(false);
+  // const [audio, setAudio] = useState(false);
 
   const videoRef = useRef();
   const audioRef = useRef();
@@ -64,15 +64,26 @@ const Participant = ({ participant }) => {
     }
   }, [audioTracks]);
 
+  const startStopVideo = () => {
+    if (videoTracks.length >= 1) {
+      setVideoTracks([])
+    } else {
+      setVideoTracks(trackpubsToTracks(participant.videoTracks))
+    }
+  };
+
   return (
     <div className="participant">
       <h3>{participant.identity}</h3>
-      {/* <i class="fas fa-video" onClick={() => setVideo(!video)}/> */}
-      <i class="fas fa-video-slash" onClick={() => setVideo(!video)}></i>
-      {/* <i class="fas fa-microphone" onClick={() => setAudio(!audio)}/> */}
-      {/* <i class="fas fa-microphone-slash" onClick={() => setAudio(!audio)}></i> */}
-      <video ref={videoRef} autoPlay={true} muted={video}/>
-      <audio ref={audioRef} autoPlay={true} muted={audio} />
+      {/* <i className="fas fa-microphone" onClick={() => setAudio(!audio)}/> */}
+      {/* <i className="fas fa-microphone-slash" onClick={() => setAudio(!audio)}></i> */}
+      <video ref={videoRef} autoPlay />
+      <audio ref={audioRef} autoPlay />
+      <span onClick={startStopVideo}>
+        {videoTracks.length >= 1 ? (<i className="fas fa-video" />)
+          : (<i style={{ color: 'red' }} className="fas fa-video-slash" />)
+        }
+      </span>
     </div>
   );
 };
