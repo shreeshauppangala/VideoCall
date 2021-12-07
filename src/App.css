@@ -4,42 +4,24 @@
 }
 
 main {
-  background: #ffffff;
   flex-grow: 1;
 }
 
-form {
-  max-width: 300px;
-  margin: 0 auto;
-}
 
 h2 {
-  font-weight: 300;
-  margin-bottom: 1em;
   text-align: center;
+  color: #f00202;
 }
 
-form > div {
-  width: 100%;
-  margin-bottom: 1em;
-}
-form > div > label {
-  display: block;
-  margin-bottom: 0.3em;
-}
-form > div > input {
-  display: block;
-  width: 100%;
-  font-size: 16px;
-  padding: 0.4em;
-  border-radius: 6px;
+ input {
+  width: 50%;
 }
 
 button {
   width: 100px;
   height:50px;
-  background: #000000;
-  color: rgb(240, 2, 2);
+  background: #ffffff;
+  color: #f00202;
   font-size: 16px;
   border-radius: 6px;
   border: 1px solid transparent;
@@ -55,6 +37,7 @@ button {
   right: 20px;
 }
 .room > h3 {
+  color: #f00202;
   text-align: center;
   font-weight: 300;
   margin-bottom: 1em;
@@ -62,26 +45,15 @@ button {
 
 .local-participant {
   text-align: center;
-  margin-bottom: 2em;
+  color: #f00202;
 }
 .remote-participants {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  padding: 0 2em 2em;
 }
-/* .participant {
-  
-} */
-
-/* .participant h3 {
-  text-align: center;
-} */
 
 video {
   width: 100%;
-  max-width: 700px;
-  display: block;
-  margin: auto;
-  border-radius: 6px;
+  height: 70vh;
 }

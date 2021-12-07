@@ -77,10 +77,11 @@ const VideoChat = () => {
     }
   }, [room, handleLogout]);
 
+
   let render;
   if (room) {
     render = (
-      <Room roomName={roomName} room={room} handleLogout={handleLogout} />
+        <Room roomName={roomName} room={room} handleLogout={handleLogout} />
     );
   } else {
     render = (
