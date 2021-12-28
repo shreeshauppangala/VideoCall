@@ -1,0 +1,90 @@
+.lobby {
+    height: 100vh;
+    background-image: url(../Images/IMG_20200722_185445.jpg);
+    background-size: cover;
+
+    .enter_text {
+        text-align: center;
+        font-size: 60px;
+        font-family: 'Yuji Hentaigana Akebono';
+        background: -webkit-linear-gradient(#e213d8, rgb(248, 203, 0));
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4em 2em;
+
+        .card {
+            width: 35%;
+            padding: 30px;
+            opacity: 0.8;
+
+            .form_grp {
+                margin: 4em 0;
+
+                .insruction {
+                    color: #ff0000;
+                }
+            }
+
+            .loading {
+                margin-top: 5em;
+                width: 100%;
+                background-image: linear-gradient(to right, #3b00fc, #f76f00);
+
+                .MuiLoadingButton-loadingIndicator {
+                    color: #1eff00;
+
+                    span {
+                        width: 23px !important;
+                    }
+                }
+            }
+
+            .join_button {
+                margin-top: 5em;
+                width: 100%;
+                color: #ffffff;
+                background-image: linear-gradient(to right, #3b00fc, #f76f00);
+            }
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+    .lobby {
+        background-image: url(../Images/free-video-2072695.jpg);
+        background-size: cover;
+
+        .enter_text {
+            font-size: 40px;
+        }
+
+        .login {
+            margin: 3em 0;
+
+            .card {
+                width: 90%;
+                height: fit-content;
+                padding: 30px 10px;
+                margin: 2em 0;
+
+                .form_grp {
+                    margin: 2em 0;
+                }
+
+                .loading {
+                    margin-top: 1em;
+                }
+
+                .join_button {
+                    margin-top: 1em;
+                }
+            }
+        }
+    }
+}

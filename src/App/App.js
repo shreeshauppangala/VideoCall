@@ -1,6 +1,5 @@
 import React from 'react';
-import './App.css';
-import VideoChat from './VideoChat';
+import VideoChat from '../VideoChat/VideoChat';
 
 const App = () => {
   return (

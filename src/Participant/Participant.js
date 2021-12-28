@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Box, Typography, Button, Card, SvgIcon } from '@mui/material';
+import { VideocamOffOutlinedIcon, VideocamOutlinedIcon, MicNoneSharpIcon, MicOffSharpIcon } from '@mui/icons-material';
+import './Participant.scss'
 
 const Participant = ({ participant }) => {
 
@@ -89,8 +92,8 @@ const Participant = ({ participant }) => {
   };
 
   return (
-    <div className="participant">
-      <h3>{participant.identity}</h3>
+    <Box className="participant">
+      <Typography>{participant.identity}</Typography>
       <video ref={videoRef} autoPlay />
       <audio ref={audioRef} autoPlay />
       <span onClick={startStopVideo}>
@@ -103,8 +106,7 @@ const Participant = ({ participant }) => {
           : (<i style={{ color: 'red' }} className="fas fa-microphone-slash" />)
         }
       </span>
-      {/* <i style={{ color: 'red' }} className="fas fa-video-slash" onClick={startVideo}/> */}
-    </div>
+    </Box>
   );
 };
 

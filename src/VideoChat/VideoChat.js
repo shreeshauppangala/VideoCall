@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import Video from "twilio-video";
-import Lobby from "./Lobby";
-import Room from "./Room";
+import Lobby from "../Lobby/Lobby";
+import Room from "../Room/Room";
 
 const VideoChat = () => {
   const [username, setUsername] = useState("");
