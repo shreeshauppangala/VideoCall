@@ -1,0 +1,36 @@
+.room {
+    padding: 20px;
+
+    .head {
+        display: flex;
+        justify-content: space-between;
+
+        .your_room {
+            text-align: center;
+            font-size: 40px;
+            font-family: 'Josefin Slab', serif;
+            background: -webkit-linear-gradient(#e213d8, #f8cb00);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .fa-phone-slash {
+            color: #ff0000;
+            cursor: pointer;
+        }
+    }
+
+
+    // .local_participant {}
+
+    .remote_text {
+        text-align: center;
+        font-size: 30px;
+        font-family: 'Josefin Slab', serif;
+        background: -webkit-linear-gradient(#e213d8, #f8cb00);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    // .remote_participants {}
+}

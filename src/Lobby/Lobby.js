@@ -45,7 +45,7 @@ const Lobby = ({
                   required
                 />
                 <FormHelperText className="insruction">
-                  Enter New Room Name OR Paste Room Name Which Sent By Your Friend.
+                  Enter New Room Name OR Room Name Which Your Friend has Sent.
                 </FormHelperText>
               </FormControl>
             </FormGroup>

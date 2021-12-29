@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Box, Typography, Card } from '@mui/material';
 import Participant from "../Participant/Participant";
+import './Room.scss'
 
 const Room = ({ roomName, room, handleLogout }) => {
   const [participants, setParticipants] = useState([]);
@@ -29,10 +31,12 @@ const Room = ({ roomName, room, handleLogout }) => {
   ));
 
   return (
-    <div className="room">
-      <h2>Your Room: {roomName}</h2>
-      <button onClick={handleLogout}>End Call</button>
-      <div className="local-participant">
+    <Box className="room">
+      <Box className="head">
+        <Typography className="your_room">Your Room: {roomName}</Typography>
+        <i class="fas fa-phone-slash" onClick={handleLogout} />
+      </Box>
+      <Card className="local_participant">
         {room ? (
           <Participant
             key={room.localParticipant.sid}
@@ -41,10 +45,10 @@ const Room = ({ roomName, room, handleLogout }) => {
         ) : (
           ""
         )}
-      </div>
-      <h3>Remote Participants</h3>
-      <div className="remote-participants">{remoteParticipants}</div>
-    </div>
+      </Card>
+      <Typography className="remote_text">Remote Participants</Typography>
+      <Card className="remote_participants">{remoteParticipants}</Card>
+    </Box>
   );
 };
 
