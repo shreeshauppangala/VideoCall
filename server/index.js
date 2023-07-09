@@ -4,21 +4,22 @@ const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 const { videoToken } = require('./tokens');
 
-const expressApp = express();
-expressApp.use(bodyParser.urlencoded({ extended: false }));
-expressApp.use(bodyParser.json());
-expressApp.use(pino);
+const app = express();
+app.disable("x-powered-by");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(pino);
 
 const sendTokenResponse = (token, res) => {
   res.json({ token: token.toJwt() });
 };
 
-expressApp.get('/api/greeting', (req, res) => {
+app.get('/api/greeting', (req, res) => {
   const name = req.query.name || 'World';
   res.json({ greeting: `Hello ${name}!` });
 });
 
-expressApp.route('/video/token')
+app.route('/video/token')
   .get((req, res) => {
     const { identity, room } = req.query;
     const token = videoToken(identity, room, config);
