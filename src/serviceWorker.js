@@ -1,5 +1,5 @@
-var regex = /^127(?:\.(?:25[0-5]|2[0-4]\d|[01]?\d{1,2})){3}$/;
-var result = regex.exec(window.location.hostname);
+const regex = /^127(?:\.(?:25[0-5]|2[0-4]\d|[01]?\d{1,2})){3}$/;
+const result = regex.exec(window.location.hostname);
 
 
 const isLocalhost = Boolean(
