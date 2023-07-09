@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Box, Typography, Button, Card, SvgIcon } from '@mui/material';
-import { VideocamOffOutlinedIcon, VideocamOutlinedIcon, MicNoneSharpIcon, MicOffSharpIcon } from '@mui/icons-material';
+import { Box, Typography } from '@mui/material';
 import './Participant.scss'
 
 const Participant = ({ participant }) => {
@@ -72,16 +71,7 @@ const Participant = ({ participant }) => {
     } else {
       setVideoTracks(trackpubsToTracks(participant.videoTracks))
     }
-    // participant.videoTracks.forEach((trackPub) => {
-    //   trackPub.track.stop()
-    // });
   };
-
-  // const startVideo = () => {
-  //   participant.videoTracks.forEach((trackPub) => {
-  //     trackPub.track.start()
-  //   });
-  // };
 
   const startStopAudio = () => {
     if (audioTracks.length >= 1) {

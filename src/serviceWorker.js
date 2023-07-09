@@ -1,9 +1,11 @@
+var regex = /^127(?:\.(?:25[0-5]|2[0-4]\d|[01]?\d{1,2})){3}$/;
+var result = regex.exec(window.location.hostname);
+
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
   window.location.hostname === '[::1]' ||
-  window.location.hostname.match(
-    /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-  )
+  result
 );
 
 export function register(config) {
@@ -33,34 +35,45 @@ export function register(config) {
 }
 
 function registerValidSW(swUrl, config) {
-  navigator.serviceWorker
-    .register(swUrl)
-    .then(registration => {
-      registration.onupdatefound = () => {
-        const installingWorker = registration.installing;
-        installingWorker.onstatechange = () => {
-          if (installingWorker.state === 'installed') {
-            if (navigator.serviceWorker.controller) {
-              console.log('New content is available; please refresh.');
+  const onSuccess = (registration) => {
+    if (config.onSuccess) {
+      config.onSuccess(registration);
+    }
+  };
 
-              if (config.onUpdate) {
-                config.onUpdate(registration);
-              }
-            } else {
-              console.log('Content is cached for offline use.');
+  const onUpdate = (registration) => {
+    if (config.onUpdate) {
+      config.onUpdate(registration);
+    }
+  };
 
-              if (config.onSuccess) {
-                config.onSuccess(registration);
-              }
-            }
-          }
-        };
-      };
+  const handleInstallingWorkerStateChange = (registration) => {
+    const installingWorker = registration.installing;
+    if (installingWorker.state === 'installed') {
+      if (navigator.serviceWorker.controller) {
+        console.log('New content is available; please refresh.');
+        onUpdate(registration);
+      } else {
+        console.log('Content is cached for offline use.');
+        onSuccess(registration);
+      }
+    }
+  };
+
+  const handleUpdateFound = (registration) => {
+    const installingWorker = registration.installing;
+    installingWorker.onstatechange = () => handleInstallingWorkerStateChange(registration);
+  };
+
+  navigator.serviceWorker.register(swUrl)
+    .then((registration) => {
+      registration.onupdatefound = () => handleUpdateFound(registration);
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('Error during service worker registration:', error);
     });
 }
+
 
 function checkValidServiceWorker(swUrl, config) {
 

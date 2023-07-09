@@ -10,34 +10,27 @@ app.use(bodyParser.json());
 app.use(pino);
 
 const sendTokenResponse = (token, res) => {
-  res.set('Content-Type', 'application/json');
-  res.send(
-    JSON.stringify({
-      token: token.toJwt()
-    })
-  );
+  res.json({ token: token.toJwt() });
 };
 
 app.get('/api/greeting', (req, res) => {
   const name = req.query.name || 'World';
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
+  res.json({ greeting: `Hello ${name}!` });
 });
 
-app.get('/video/token', (req, res) => {
-  const identity = req.query.identity;
-  const room = req.query.room;
-  const token = videoToken(identity, room, config);
-  sendTokenResponse(token, res);
+app.route('/video/token')
+  .get((req, res) => {
+    const { identity, room } = req.query;
+    const token = videoToken(identity, room, config);
+    sendTokenResponse(token, res);
+  })
+  .post((req, res) => {
+    const { identity, room } = req.body;
+    const token = videoToken(identity, room, config);
+    sendTokenResponse(token, res);
+  });
 
+const server = app.listen(3001, () => {
+  const { address, port } = server.address();
+  console.log(`Express server is running on ${address}:${port}`);
 });
-app.post('/video/token', (req, res) => {
-  const identity = req.body.identity;
-  const room = req.body.room;
-  const token = videoToken(identity, room, config);
-  sendTokenResponse(token, res);
-});
-
-app.listen(3001, () =>
-  console.log('Express server is running on localhost:3001')
-);
